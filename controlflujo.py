@@ -32,4 +32,4 @@ else:
     if numero1 == "issue" or numero2 == "issue":
         print("solo numeros bro")
     else:
-        print(numero1+numero2)
+        print("La suma de los dos numeros es:", numero1+numero2)
