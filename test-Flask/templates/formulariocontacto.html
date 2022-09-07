@@ -1,0 +1,28 @@
+    {% block tittle %}
+        Valeriana Cartesiana
+    {% endblock %}
+    <head><div>Encabezado</div></head>
+    {% block content %}
+    <h2>Formularios</h2>
+        <div>Cuerpo</div>
+        <p>Por favor llena este formulario para ponerte en contacto con nosotros</p>
+        <fieldset>
+            <form action="crear" method="post">
+                <fieldset>
+                    <legend>Contacto</legend>
+                    <label>Username</label>
+                    <input type="username" name="username" required placeholder="Nombre..."/>
+                    <br/>
+                    <label>E-mail</label>
+                    <input type="email" name="email" placeholder="Correo eléctronico..."/>
+                    <br/>
+                    <label>Edad</label>
+                    <input type="edad" name="edad" placeholder="Edad..."/>
+                    <br/>
+                    <!-- <input type="submit" value="Guardar" /> -->
+                    <button>Guardar</button>
+                </fieldset>
+            </form>
+        </fieldset>
+    {% endblock %}
+    
