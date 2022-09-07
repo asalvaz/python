@@ -1,7 +1,33 @@
 class decremental:
     def __init__(self) -> None:
         pass
-    def decremental(self, list, n):
+    
+    def getdays(self, list):
+        longitud = len(list)
+        return longitud
+
+    def repetidos_tardados(self, lista):
+        secuencia = []
+
+        for i in range(len(lista)):
+            for j in range(len(lista)):
+                if i != j:
+                    if lista[i] == lista[j] and lista[i] not in secuencia:
+                        secuencia.append(lista[i])
+        return secuencia
+
+    def repetidos_rapida(self, lista):
+        secuencia = []
+        archivo = []
+
+        for n in lista:
+            if n not in archivo:
+                archivo.append(n)
+            else:
+                secuencia.append(n)
+        return secuencia
+
+    def intentodecremental(self, list, n):
         secuencia = []
 
         for i in range(len(list)):
@@ -11,14 +37,107 @@ class decremental:
                         secuencia.append(list[i])
                         secuencia.append(list[j])
         return secuencia
-    def getdays(self, list):
-        longitud = len(list)
-        return longitud
-    def repetidos(self, lista):
-        pass
+    
+    def bidecremental(self, lista):
+        secuencia = []
+        archivo = []
+        bypass = 0
+        thefirstone = False
+        for n in lista:
+            if thefirstone != False:
+                if bypass  == n:
+                    archivo.append(n+1)
+                    archivo.append(n)
+                    if len(secuencia) == 0:
+                        secuencia = [archivo]
+                    else:
+                        secuencia.append(archivo)
+                    archivo = []
+                    bypass = n-1
+                else:
+                    bypass = n-1
+            else:
+                thefirstone = True
+                bypass = n-1
+        return secuencia
+
+    def decremental(self, lista):
+        secuencia = []
+        archivo = []
+        bypass = 0
+        numintegrales = 1
+        thefirstone = False
+        for j in range(len(lista)):
+            if thefirstone != False:
+                if bypass  == lista[j]:
+                    bypass = lista[j]-1
+                    if numintegrales==1:
+                        archivo.append(lista[j-1])
+                    numintegrales += 1
+                    archivo.append(lista[j])
+                    print(lista.index)
+                    print(lista[j])
+                    #En el caso de que termine siendo igual no se esta considerando el realizar la suma del arreglo [5 4 3 fin]
+                else:
+                    #for i in range(numintegrales):
+                    
+                    if len(secuencia) == 0:
+                        secuencia.append(archivo)
+                        numintegrales=1
+                    else:
+                        secuencia.append(archivo)
+                        numintegrales=1
+                    archivo = []
+                    bypass = lista[j]-1
+            else:
+                thefirstone = True
+                bypass = lista[j]-1
+        if numintegrales > 0:
+            if len(secuencia) == 0:
+                secuencia.append(archivo)
+            else:
+                secuencia.append(archivo)
+        return secuencia
+
+    def couldbedecremental(self, lista):
+        secuencia = []
+        archivo = []
+        bypass = 0
+        numintegrales = 1
+        thefirstone = False
+        for j in range(len(lista)):
+            if thefirstone != False:
+                if bypass  == lista[j]:
+                    bypass = lista[j]-1
+                    if numintegrales==1:
+                        archivo.append(lista[j-1])
+                    numintegrales += 1
+                    archivo.append(lista[j])
+                    print(lista.index)
+                    print(lista[j])
+                    #En el caso de que termine siendo igual no se esta considerando el realizar la suma del arreglo [5 4 3 fin]
+                else:
+                    #for i in range(numintegrales):
+                    secuencia.append(archivo)
+                    numintegrales=1
+                    archivo = []
+                    bypass = lista[j]-1
+            else:
+                thefirstone = True
+                bypass = lista[j]-1
+        if numintegrales > 0:
+                secuencia.append(archivo)
+        return secuencia            
+
+
 
 arpropposed = [8,7,5,4,3,5,4,3]
 obj = decremental()
-long = obj.getdays(arpropposed)
-print(str(long))
-print(obj.decremental(arpropposed, obj.getdays(arpropposed)))
+long = obj.getdays(arpropposed) 
+#print(str(long))
+#print("intento decremental" + str(obj.intentodecremental(arpropposed, obj.getdays(arpropposed))))
+#print("Repetidos" + str(obj.repetidos_tardados(arpropposed)))
+#print("Repetidos rapido" + str(obj.repetidos_rapida(arpropposed)))
+#print("decremental" + str(obj.bidecremental(arpropposed)))
+#print("decremental" + str(obj.decremental(arpropposed)))
+print("decremental" + str(obj.couldbedecremental(arpropposed)))

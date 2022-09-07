@@ -43,7 +43,7 @@ class AbstractShapeFactory(object):
 class ShapeFactory(AbstractShapeFactory):
     def getShape(self, shapeType):
         if(shapeType is None):
-            return null
+            return None
           
         if(shapeType == "CIRCLE"):
             return  Circle()    
@@ -52,12 +52,12 @@ class ShapeFactory(AbstractShapeFactory):
         elif(shapeType == "SQUARE"):
             return Square()
           
-        return null
+        return None
 
 class RoundedShapeFactory(AbstractShapeFactory):
     def getShape(self, shapeType):
         if(shapeType is None):
-            return null
+            return None
           
         if(shapeType == "CIRCLE"):
             return  RoundedCircle()    
@@ -66,7 +66,7 @@ class RoundedShapeFactory(AbstractShapeFactory):
         elif(shapeType == "SQUARE"):
             return RoundedSquare()
           
-        return null
+        return None
 # Fin Paso 4
 
 # Shape Interface
