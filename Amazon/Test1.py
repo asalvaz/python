@@ -113,12 +113,11 @@ class decremental:
                         archivo.append(lista[j-1])
                     numintegrales += 1
                     archivo.append(lista[j])
-                    print(lista.index)
-                    print(lista[j])
                     #En el caso de que termine siendo igual no se esta considerando el realizar la suma del arreglo [5 4 3 fin]
                 else:
-                    #for i in range(numintegrales):
                     secuencia.append(archivo)
+                    if numintegrales>2:
+                        secuencia.append(decremental().couldbedecremental(archivo))
                     numintegrales=1
                     archivo = []
                     bypass = lista[j]-1
