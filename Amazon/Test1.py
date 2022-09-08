@@ -1,3 +1,5 @@
+from cgi import FieldStorage
+from operator import index
 from turtle import left
 import FuncionesT1
 class decremental(FuncionesT1.FuncionesT1):
@@ -117,11 +119,56 @@ class Arbol():
             print(nodo.key)#, end=", "
          #   self.arreglo = self.arreglo.append(nodo.key)
             self.__inorden_recursivo(nodo.right)
+    
+    def recorridoB(self, lista, numrecorridos=800000):
+        anterior = lista[0]
+        marcha=0
+        firstone = 0
+        indice = 0
+        for n in lista:
+            if indice > 0:
+                if n+1 == lista[indice-1] and marcha < numrecorridos:
+                    marcha +=1
+                    #print("enlistado en: " + str(marcha+1))
+                    #print(lista[indice])
+                else:
+                    firstone=indice-marcha-1
+                    lastone= indice
+                    print(str(firstone) + " " + str(lastone))
+                    extraccion = lista[firstone:lastone]
+                    print(extraccion)
+                    if marcha > 1:
+                        self.recorridoB(extraccion,len(extraccion)-2)
+                    elif numrecorridos != 800000 and  len(lista)> 2:
+                        #print(str(lista) + " [ " + str(len(lista)) + " - " + str(marcha) + " : " + str(len(lista)) + ", " +  str(len(lista)) + "-2")
+                        #print(lista[len(lista)-marcha-1:len(lista)])
+                        self.recorridoB(lista[len(lista)-marcha-1:len(lista)],len(lista)-2)
+                    marcha=0
+            indice = indice +1
+        if indice == len(lista) and marcha>0:
+            firstone=indice-marcha-1
+            lastone= indice
+            print(str(firstone) + " " + str(lastone))
+            extraccion = lista[firstone:lastone]
+            print(extraccion)
+            if marcha > 1:
+                self.recorridoB(extraccion,len(extraccion)-2)
+            elif numrecorridos != 800000 and  len(lista)> 2:
+                #print(str(lista) + " [ " + str(len(lista)) + " - " + str(marcha) + " : " + str(len(lista)) + ", " + str(len(lista)) + "-2")
+                #print(lista[len(lista)-marcha-1:len(lista)])
+                self.recorridoB(lista[len(lista)-marcha-1:len(lista)],len(lista)-2)
+                
+            marcha=0
+            
+#Ya se tiene la extracción. ahora toca realizar el arbol.
 #Fin Arbol experimental
 
 arreglopropuesto = [8,7,5,4,3,5,4,3]
-ObjetoArbol = Arbol(arreglopropuesto)
-ObjetoArbol.inorden()
+arreglopropuesto2 = [5,4,3,2,1,0]
+ObjetoArbol = Arbol(arreglopropuesto2)
+ObjetoArbol.recorridoB(arreglopropuesto2)
+#ObjetoArbol.inorden()
+#primero tengo que hacer el recorrido y partir los datos. esto hasta que ya no haya más
 
 
 
