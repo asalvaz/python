@@ -1,7 +1,6 @@
 class FuncionesT1:
-    def __init__(self) -> None:
-        pass
-    
+    pass
+
     def getdays(self, list):
         longitud = len(list)
         return longitud
@@ -105,6 +104,7 @@ class FuncionesT1:
         bypass = 0
         numintegrales = 1
         thefirstone = False
+        
         for j in range(len(lista)):
             if thefirstone != False:
                 if bypass  == lista[j]:
@@ -117,7 +117,7 @@ class FuncionesT1:
                 else:
                     secuencia.append(archivo)
                     if numintegrales>2:
-                        secuencia.append(decremental().couldbedecremental(archivo))
+                        secuencia.append(self.couldbedecremental(archivo))
                     numintegrales=1
                     archivo = []
                     bypass = lista[j]-1
@@ -127,3 +127,51 @@ class FuncionesT1:
         if numintegrales > 0:
                 secuencia.append(archivo)
         return secuencia   
+#Alternativa (Tomar una copia de arreglo y Sumar al arreglo un campo para mover a la derecha y comparar ambos casos a la vez.)
+
+
+
+#Arbol bidimencional:
+class Nodo:
+    def __init__(self, key):
+        self.key = key
+        self.left = None
+        self.right = None
+
+class Arbol3():
+    def __init__(self, key):
+        self.primarykey = Nodo(key)
+
+    def addinpreorder(self, raiz, key):
+        if raiz.key >= key:
+            if raiz.left is None:
+                  raiz.left = Nodo(key)
+            else:
+                self.addinpreorder(raiz.left, key)
+        else:
+            if raiz.right is None:
+                  raiz.right = Nodo(key)
+            else:
+                self.addinpreorder(raiz.right, key)
+        
+    def add(self, key):
+        self.addinpreorder(self.primarykey, key)
+
+    def carga_arreglo(self, arreglo):
+        
+        arbolito = []
+        for n in arreglo:
+            arbolito = self.add(n)
+        return arbolito
+
+    def inorden(self):
+        print("Imprimiendo árbol inorden: ")
+        self.__inorden_recursivo(self.primarykey)
+        print("")
+
+    def __inorden_recursivo(self, nodo):
+        if nodo is not None:
+            self.__inorden_recursivo(nodo.left)
+            print(nodo.key, end=", ")#, end=", "
+            self.__inorden_recursivo(nodo.right)
+#Fin Arbol bidimencional
