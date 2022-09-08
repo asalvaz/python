@@ -55,7 +55,6 @@ class Arbol3():
         self.addinpreorder(self.primarykey, key)
 
     def carga_arreglo(self, arreglo):
-        
         arbolito = []
         for n in arreglo:
             arbolito = self.add(n)
@@ -70,22 +69,78 @@ class Arbol3():
         if nodo is not None:
             self.__inorden_recursivo(nodo.left)
             print(nodo.key)#, end=", "
-            self.arreglo = self.arreglo.append(nodo.key)
+         #   self.arreglo = self.arreglo.append(nodo.key)
             self.__inorden_recursivo(nodo.right)
 #Fin Arbol bidimencional
+
+#Arbol experimental
+class Nodo:
+    def __init__(self, key):
+        self.key = key
+        self.left = None
+        self.right = None
+        self.arreglo = []
+        
+class Arbol():
+    def __init__(self, key):
+        self.primarykey = Nodo(key)
+
+    def addinpreorder(self, raiz, key):
+        if raiz.key >= key:
+            if raiz.left is None:
+                  raiz.left = Nodo(key)
+            else:
+                self.addinpreorder(raiz.left, key)
+        else:
+            if raiz.right is None:
+                  raiz.right = Nodo(key)
+            else:
+                self.addinpreorder(raiz.right, key)
+        
+    def add(self, key):
+        self.addinpreorder(self.primarykey, key)
+
+    def carga_arreglo(self, arreglo):
+        arbolito = []
+        for n in arreglo:
+            arbolito = self.add(n)
+        return arbolito
+
+    def inorden(self):
+        print("Imprimiendo árbol inorden: ")
+        self.__inorden_recursivo(self.primarykey)
+        print("")
+
+    def __inorden_recursivo(self, nodo):
+        if nodo is not None:
+            self.__inorden_recursivo(nodo.left)
+            print(nodo.key)#, end=", "
+         #   self.arreglo = self.arreglo.append(nodo.key)
+            self.__inorden_recursivo(nodo.right)
+#Fin Arbol experimental
+
+arreglopropuesto = [8,7,5,4,3,5,4,3]
+ObjetoArbol = Arbol(arreglopropuesto)
+ObjetoArbol.inorden()
+
+
+
+
 
 
 # arpropposed = {1,3,2}
 # [8,7,5,4,3,5,4,3]
 
 #objeto = Arbol2(1, Arbol2(2,None, None) , Arbol2(3,None,None))
-arreglopropuesto = [8,7,5,4,3,5,4,3]
+#arreglopropuesto = [8,7,5,4,3,5,4,3]
 #objeto2 = FuncionesT1.Arbol3(arreglopropuesto[0])
-objeto2 = Arbol3(arreglopropuesto[0])
-arreglopropuesto.pop(0)
-objeto2.carga_arreglo(arreglopropuesto)
+#objeto2 = Arbol3(arreglopropuesto[0])
+#objeto3 = Arbol3(arreglopropuesto)
+#objeto3.inorden()
+#arreglopropuesto.pop(0)
+#objeto2.carga_arreglo(arreglopropuesto)
 #print(objeto2.primarykey.key)
-objeto2.inorden()
+#objeto2.inorden()
 #listasalida = objeto2.carga_arreglo(arreglopropuesto[])
 #listasalida = objeto2.carga_arreglo(3) 
 #print(listasalida)
