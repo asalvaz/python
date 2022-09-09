@@ -297,12 +297,12 @@ class recorridos:
 
 #entrada = input ("Ingrese un arreglo")
 entrada =  [8,7,5,4,3,5,4,3]
-entrada2 =  [3,2,1]
+entrada2 =  [1,6,7,3,6,8,5,3,6,78,7,4,2,2,4,6,7,8,9,6,45,3,3,2,8,6,5,4,3,2,2,3,4,5,2,5,7]
 objeto_recorrido = recorridos()
 #bandera = objeto_recorrido.decrece(entrada2)
 #if (bandera):
     #print (entrada2)
-arreglo_final = objeto_recorrido.obtiene_arreglo(entrada)
+arreglo_final = objeto_recorrido.obtiene_arreglo(entrada2)
 print(arreglo_final)
 print(len(arreglo_final))
 
