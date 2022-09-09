@@ -189,6 +189,7 @@ class recorridos:
         contador = 1
         contador_2 = 1
         tamano_arreglo_a_extraer = 0
+        arreglo_inicio = []
         arreglo_final_final = []
         primero_comparar = 0
         ultimo_comparar = 0
@@ -196,9 +197,12 @@ class recorridos:
         for inicio in lista:
             print("Inicio for: ", end="")
             print( contador )
-            if contador == 1:
-                for inicio in lista:
-                    arreglo_final_final.append(inicio)
+            if(False):
+                pass
+            #if contador == 1:  #ACTIVAR ESTE IF SI REQUERIMOS EL ARREGLO INICIAL EN UN SOLO MOMENTO [1 2 3 4 5 6 7 8], desactivarlo si requerimos el arreglo separado [1] [2] [3]... [n]
+            #    for inicio in lista:
+            #        arreglo_inicio.append(inicio)
+            #    arreglo_final_final.append(arreglo_inicio)
             else:
                 tamano_arreglo_a_extraer = contador
                 #Este ciclo se usa para obtener los datos de la lista la cantidad de veces requerida según el contador 
@@ -239,30 +243,65 @@ class recorridos:
                         continue
                 #print("contador", end=":")
                 #print(indice)
-                print(arreglo_temporal)
+                if(not arreglo_temporal):
+                    pass
+                else:
+                    #print(arreglo_temporal)
+                    arreglo_final_final.append(arreglo_temporal)
                 contador_2 = 1
-                arreglo_final_final.append(arreglo_temporal)
             contador +=1
         return arreglo_final_final
 
     ## HACE FALTA MEJORAR ESTE METODO PARA QUE CONFIRME LOS DECREMENTALES
     def extraer_arreglo_si_decrece(self, lista):
-        print("Se hace recorrido de la lista: " + str(lista) + " Y se confirma que es aceptable")
+        #print("Se hace recorrido de la lista: " + str(lista) + " Y se confirma que es aceptable")
         listavacia = []
         lista_ordenada = lista.copy()
-        print(lista)
         lista_ordenada.sort(reverse=True)
         if(lista != listavacia and lista == lista_ordenada):
-            return True
+            if(self.decrece(lista)):
+                return True
+            else:
+                return False
         else:
             return False
 
+
+
+    # Decrece
+    # 
+    #         
+    def decrece(self, lista):
+        longitud = len(lista)
+        contador = 0
+        temp_numero_anterior = 0
+        Flag_todos_son_consecutivos = False
+        if longitud == 1:
+            return True
+        for indice in lista:
+            if(contador==0):
+                temp_numero_anterior = indice
+                Flag_todos_son_consecutivos=True
+                contador += contador + 1
+            #si es uno más que el anterior continua y agregalo al arreglo temporal"
+            elif(temp_numero_anterior-1 == indice):
+                temp_numero_anterior = indice
+                Flag_todos_son_consecutivos=True
+                contador += 1
+            else:
+                Flag_todos_son_consecutivos=False
+                return Flag_todos_son_consecutivos
+        return Flag_todos_son_consecutivos
     
 
 
 #entrada = input ("Ingrese un arreglo")
 entrada =  [8,7,5,4,3,5,4,3]
+entrada2 =  [3,2,1]
 objeto_recorrido = recorridos()
+#bandera = objeto_recorrido.decrece(entrada2)
+#if (bandera):
+    #print (entrada2)
 arreglo_final = objeto_recorrido.obtiene_arreglo(entrada)
 #objeto_recorrido.extraer_arreglo_si_decrece(entrada)
 
