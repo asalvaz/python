@@ -211,27 +211,29 @@ class recorridos:
                     #if(checador_relaciones_polimorficas<=lista_extraida_a_revisar):
                     lucky_number =(longitud_arreglo+1-tamano_arreglo_a_extraer)
                     if(lucky_number >= contador_2):
-                        print("Generará el list siempre y cuando sean iguales los números")
-                        #En el primero solo asigna el valor al circuito mediante la variable principal
-                        if(contador_2==1):
-                            temp_numero_anterior = indice
-                            Flag_todos_son_consecutivos=True
-                            arreglo_temporal.append(indice)
-                        #si es uno más que el anterior continua y agregalo al arreglo temporal"
-                        elif(temp_numero_anterior-1 == indice):
-                            arreglo_temporal.append(indice)
-                            Flag_todos_son_consecutivos=True
-                        else:
-                            Flag_todos_son_consecutivos=False
-                            contador_2 = lucky_number+1
-                            continue
+                        print("Generará el list siempre y cuando sean iguales los números " + str(indice) + " " + str(contador_2))
+                        Flag_todos_son_consecutivos = self.extraer_arreglo_si_decrece(lista[(contador_2-1):(contador_2-1+contador)])
+                        if(Flag_todos_son_consecutivos):
+                            arreglo_temporal.append(lista[(contador_2-1):(contador_2-1+contador)])
+                #        #En el primero solo asigna el valor al circuito mediante la variable principal
+                #        if(contador_2==1):
+                #            temp_numero_anterior = indice
+                #            Flag_todos_son_consecutivos=True
+                #        #si es uno más que el anterior continua y agregalo al arreglo temporal"
+                #        elif(temp_numero_anterior-1 == indice):
+                #            arreglo_temporal.append(indice)
+                #            Flag_todos_son_consecutivos=True
+                #        else:
+                #            Flag_todos_son_consecutivos=False
+                #            contador_2 = lucky_number+1
+                #            continue
                         contador_2 = contador_2 + 1
                         #compararla()
                         #for indice in range(contador):
                         #pass
                             #En este ciclo se ingresara el arreglo dividido en la fracción correspondiente y se comparará si el ciclo se agrega o no
                     else:
-                        #print("No se genera porque: LN" + str(lucky_number) + "es mayor al " + str(contador_2))
+                        #print("No se genera porque: LN:" + str(lucky_number) + "es mayor al " + str(contador_2))
                         #print(str(longitud_arreglo) + "+1 -" + str(tamano_arreglo_a_extraer) + "< " + str(contador_2))
                         #print(str(lucky_number) + " Esto no lo genera porque ya sobrepaso el limite:"+ str(tamano_arreglo_a_extraer) + " " + str(longitud_arreglo))
                         continue
@@ -239,16 +241,30 @@ class recorridos:
                 #print(indice)
                 print(arreglo_temporal)
                 contador_2 = 1
-                if(Flag_todos_son_consecutivos):
-                    arreglo_final_final.append(arreglo_temporal)
+                arreglo_final_final.append(arreglo_temporal)
             contador +=1
         return arreglo_final_final
+
+    ## HACE FALTA MEJORAR ESTE METODO PARA QUE CONFIRME LOS DECREMENTALES
+    def extraer_arreglo_si_decrece(self, lista):
+        print("Se hace recorrido de la lista: " + str(lista) + " Y se confirma que es aceptable")
+        listavacia = []
+        lista_ordenada = lista.copy()
+        print(lista)
+        lista_ordenada.sort(reverse=True)
+        if(lista != listavacia and lista == lista_ordenada):
+            return True
+        else:
+            return False
+
+    
 
 
 #entrada = input ("Ingrese un arreglo")
 entrada =  [8,7,5,4,3,5,4,3]
 objeto_recorrido = recorridos()
 arreglo_final = objeto_recorrido.obtiene_arreglo(entrada)
+#objeto_recorrido.extraer_arreglo_si_decrece(entrada)
 
 #arreglopropuesto = [8,7,5,4,3,5,4,3]
 #arreglopropuesto2 = [5,4,3,2,1,0]
