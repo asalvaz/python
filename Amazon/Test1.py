@@ -163,10 +163,97 @@ class Arbol():
 #Ya se tiene la extracción. ahora toca realizar el arbol.
 #Fin Arbol experimental
 
-arreglopropuesto = [8,7,5,4,3,5,4,3]
-arreglopropuesto2 = [5,4,3,2,1,0]
-ObjetoArbol = Arbol(arreglopropuesto2)
-ObjetoArbol.recorridoB(arreglopropuesto2)
+#
+# Recorridos "decrementales":
+# #
+class recorridos:
+    def obtiene_arreglo(self, n):
+        lista=list(n)
+        arreglo_esperado = []
+        #if(n < lista):
+        if(lista):
+            #for i in n:
+                #print(i, end=", ")
+            #return n
+            arreglo_esperado = self.obtiene_datos(lista)
+            for i in arreglo_esperado:
+                print(i, end=", ")
+            print("\n" + str(arreglo_esperado))
+            #Aquí podría ir un return del valor final
+        else:
+            raise Exception("Dato no es una lista, favor de ingresar una lista")
+
+    def obtiene_datos(self, lista):
+        longitud_arreglo = len(lista)
+        inicio = 2
+        contador = 1
+        contador_2 = 1
+        tamano_arreglo_a_extraer = 0
+        arreglo_final_final = []
+        primero_comparar = 0
+        ultimo_comparar = 0
+        #Este ciclo se usa para realizar las comparaciones en cada longitud posible
+        for inicio in lista:
+            print("Inicio for: ", end="")
+            print( contador )
+            if contador == 1:
+                for inicio in lista:
+                    arreglo_final_final.append(inicio)
+            else:
+                tamano_arreglo_a_extraer = contador
+                #Este ciclo se usa para obtener los datos de la lista la cantidad de veces requerida según el contador 
+                arreglo_temporal=[]
+                Flag_todos_son_consecutivos = False
+                temp_numero_anterior = 0
+                for indice in lista:
+                    #comparacion = checador_relaciones_polimorficas = Número de veces a comparar
+                    #lista_extraida_a_revisar = la extracción [1,2] [2,3] [2,4]
+                    #if(checador_relaciones_polimorficas<=lista_extraida_a_revisar):
+                    lucky_number =(longitud_arreglo+1-tamano_arreglo_a_extraer)
+                    if(lucky_number >= contador_2):
+                        print("Generará el list siempre y cuando sean iguales los números")
+                        #En el primero solo asigna el valor al circuito mediante la variable principal
+                        if(contador_2==1):
+                            temp_numero_anterior = indice
+                            Flag_todos_son_consecutivos=True
+                            arreglo_temporal.append(indice)
+                        #si es uno más que el anterior continua y agregalo al arreglo temporal"
+                        elif(temp_numero_anterior-1 == indice):
+                            arreglo_temporal.append(indice)
+                            Flag_todos_son_consecutivos=True
+                        else:
+                            Flag_todos_son_consecutivos=False
+                            contador_2 = lucky_number+1
+                            continue
+                        contador_2 = contador_2 + 1
+                        #compararla()
+                        #for indice in range(contador):
+                        #pass
+                            #En este ciclo se ingresara el arreglo dividido en la fracción correspondiente y se comparará si el ciclo se agrega o no
+                    else:
+                        #print("No se genera porque: LN" + str(lucky_number) + "es mayor al " + str(contador_2))
+                        #print(str(longitud_arreglo) + "+1 -" + str(tamano_arreglo_a_extraer) + "< " + str(contador_2))
+                        #print(str(lucky_number) + " Esto no lo genera porque ya sobrepaso el limite:"+ str(tamano_arreglo_a_extraer) + " " + str(longitud_arreglo))
+                        continue
+                #print("contador", end=":")
+                #print(indice)
+                print(arreglo_temporal)
+                contador_2 = 1
+                if(Flag_todos_son_consecutivos):
+                    arreglo_final_final.append(arreglo_temporal)
+            contador +=1
+        return arreglo_final_final
+
+
+#entrada = input ("Ingrese un arreglo")
+entrada =  [8,7,5,4,3,5,4,3]
+objeto_recorrido = recorridos()
+arreglo_final = objeto_recorrido.obtiene_arreglo(entrada)
+
+#arreglopropuesto = [8,7,5,4,3,5,4,3]
+#arreglopropuesto2 = [5,4,3,2,1,0]
+#ObjetoArbol = Arbol(arreglopropuesto2)
+#ObjetoArbol.recorridoB(arreglopropuesto2)
 #ObjetoArbol.inorden()
 #primero tengo que hacer el recorrido y partir los datos. esto hasta que ya no haya más
 
