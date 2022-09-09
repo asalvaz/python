@@ -176,10 +176,11 @@ class recorridos:
                 #print(i, end=", ")
             #return n
             arreglo_esperado = self.obtiene_datos(lista)
-            for i in arreglo_esperado:
-                print(i, end=", ")
-            print("\n" + str(arreglo_esperado))
+            ###for i in arreglo_esperado:
+                ###print(i, end=", ")
+            ###print("\n" + str(arreglo_esperado))
             #Aquí podría ir un return del valor final
+            return arreglo_esperado
         else:
             raise Exception("Dato no es una lista, favor de ingresar una lista")
 
@@ -195,8 +196,7 @@ class recorridos:
         ultimo_comparar = 0
         #Este ciclo se usa para realizar las comparaciones en cada longitud posible
         for inicio in lista:
-            print("Inicio for: ", end="")
-            print( contador )
+            ###print("Inicio for: " + str(contador))
             if(False):
                 pass
             #if contador == 1:  #ACTIVAR ESTE IF SI REQUERIMOS EL ARREGLO INICIAL EN UN SOLO MOMENTO [1 2 3 4 5 6 7 8], desactivarlo si requerimos el arreglo separado [1] [2] [3]... [n]
@@ -215,7 +215,7 @@ class recorridos:
                     #if(checador_relaciones_polimorficas<=lista_extraida_a_revisar):
                     lucky_number =(longitud_arreglo+1-tamano_arreglo_a_extraer)
                     if(lucky_number >= contador_2):
-                        print("Generará el list siempre y cuando sean iguales los números " + str(indice) + " " + str(contador_2))
+                        ###print("Generará el list siempre y cuando sean iguales los números " + str(indice) + " " + str(contador_2))
                         Flag_todos_son_consecutivos = self.extraer_arreglo_si_decrece(lista[(contador_2-1):(contador_2-1+contador)])
                         if(Flag_todos_son_consecutivos):
                             arreglo_temporal.append(lista[(contador_2-1):(contador_2-1+contador)])
@@ -303,6 +303,17 @@ objeto_recorrido = recorridos()
 #if (bandera):
     #print (entrada2)
 arreglo_final = objeto_recorrido.obtiene_arreglo(entrada)
+print(arreglo_final)
+print(len(arreglo_final))
+
+
+listaplana = []
+listaplana = [item for l in arreglo_final for item in l]
+print(listaplana)
+
+print(len(listaplana))
+
+
 #objeto_recorrido.extraer_arreglo_si_decrece(entrada)
 
 #arreglopropuesto = [8,7,5,4,3,5,4,3]
