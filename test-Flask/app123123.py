@@ -1,7 +1,7 @@
 #Framework flask
 #En terminal py -3 -m venv venv para crear la carpeta venv
 #ls para comprobarlo
-# despues ejecutar: . venv/bin/activate ... 
+# despues ejecutar: . venv/scripts/activate ó . venv/bin/activate ... según sea el caso
 from flask import Flask
 app = Flask(__name__)
 

@@ -5,7 +5,7 @@
 # o tambien puede ser . venv/bin/activate ... 
 
 # Despues de ejecutar venv inicializamos este archivo de la siguiente manera: set FLASK_APP=Flask.py
-# posteriormente corremos el flask con el siguiente ocmando: flask run
+# posteriormente corremos el flask con el siguiente comando: flask run
 # En windows las variables de entorno desde PowerShell se declaran de la siguiente manera:
 # $env:FLASK_APP = "Flask.py"
 # $env:FLASK_DEBUG = 1

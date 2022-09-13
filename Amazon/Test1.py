@@ -215,7 +215,7 @@ class recorridos:
                     #if(checador_relaciones_polimorficas<=lista_extraida_a_revisar):
                     lucky_number =(longitud_arreglo+1-tamano_arreglo_a_extraer)
                     if(lucky_number >= contador_2):
-                        ###print("Generará el list siempre y cuando sean iguales los números " + str(indice) + " " + str(contador_2))
+                        ###print("SI Generará el list siempre y cuando sean iguales los números " + str(indice) + " " + str(contador_2))
                         Flag_todos_son_consecutivos = self.extraer_arreglo_si_decrece(lista[(contador_2-1):(contador_2-1+contador)])
                         if(Flag_todos_son_consecutivos):
                             arreglo_temporal.append(lista[(contador_2-1):(contador_2-1+contador)])
@@ -237,6 +237,7 @@ class recorridos:
                         #pass
                             #En este ciclo se ingresara el arreglo dividido en la fracción correspondiente y se comparará si el ciclo se agrega o no
                     else:
+                        ###print("NO Generará el list siempre y cuando sean iguales los números " + str(indice) + " " + str(contador_2))
                         #print("No se genera porque: LN:" + str(lucky_number) + "es mayor al " + str(contador_2))
                         #print(str(longitud_arreglo) + "+1 -" + str(tamano_arreglo_a_extraer) + "< " + str(contador_2))
                         #print(str(lucky_number) + " Esto no lo genera porque ya sobrepaso el limite:"+ str(tamano_arreglo_a_extraer) + " " + str(longitud_arreglo))
@@ -254,14 +255,19 @@ class recorridos:
 
     ## HACE FALTA MEJORAR ESTE METODO PARA QUE CONFIRME LOS DECREMENTALES
     def extraer_arreglo_si_decrece(self, lista):
-        #print("Se hace recorrido de la lista: " + str(lista) + " Y se confirma que es aceptable")
-        listavacia = []
+        ###print("Se hace recorrido de la lista: " + str(lista) + " Y se confirma que es aceptable")
+        ###print("Se hace recorrido de la lista: " + str(lista) + " Y se confirma que es aceptable")
         lista_ordenada = lista.copy()
         lista_ordenada.sort(reverse=True)
-        if(lista != listavacia and lista == lista_ordenada):
+        ###print("Se hace recorrido de la lista: " + str(lista) + " Y se confirma que es aceptable")
+        print(lista)
+        print(lista_ordenada)
+        if(lista): #and lista == lista_ordenada):
             if(self.decrece(lista)):
+                print("Se hace recorrido de la lista: " + str(lista) + " Y se confirma que es aceptable")
                 return True
             else:
+                print("NO Se hace recorrido de la lista: " + str(lista) + " Y se confirma que NO es aceptable" )
                 return False
         else:
             return False
@@ -272,12 +278,10 @@ class recorridos:
     # 
     #         
     def decrece(self, lista):
-        longitud = len(lista)
+        
         contador = 0
         temp_numero_anterior = 0
         Flag_todos_son_consecutivos = False
-        if longitud == 1:
-            return True
         for indice in lista:
             if(contador==0):
                 temp_numero_anterior = indice
@@ -291,13 +295,15 @@ class recorridos:
             else:
                 Flag_todos_son_consecutivos=False
                 return Flag_todos_son_consecutivos
+        print(Flag_todos_son_consecutivos)
         return Flag_todos_son_consecutivos
     
 
 
 #entrada = input ("Ingrese un arreglo")
 entrada =  [8,7,5,4,3,5,4,3]
-entrada2 =  [1,6,7,3,6,8,5,3,6,78,7,4,2,2,4,6,7,8,9,6,45,3,3,2,8,6,5,4,3,2,2,3,4,5,2,5,7]
+entrada2 = [7,6,5,4,3,2,1,2,3,2,1,0]
+# [1,6,7,3,6,8,5,3,6,78,7,4,2,2,4,6,7,8,9,6,45,3,3,2,8,6,5,4,3,2,2,3,4,5,2,5,7]
 objeto_recorrido = recorridos()
 #bandera = objeto_recorrido.decrece(entrada2)
 #if (bandera):
