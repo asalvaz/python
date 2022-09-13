@@ -38,11 +38,6 @@ def max_de_3 (n1: int, n2: int, n3:int):
     pre_mayor = (custom_max(n1,n2))
     mayor = (custom_max(n1, n3))
 
-<<<<<<< HEAD
     return n1
         
 
-=======
-        return n1
-        
->>>>>>> f970fdc727fff5a8c6bebab31b598c7f42862441
