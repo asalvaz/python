@@ -1,5 +1,5 @@
 
-class programacion_ATS:
+class programacion_ATS2:
     def __init__(self):
         self.diccionario = {"Andres":{"edad":32,"altura":1.83},"Valeria":{"edad":30,"altura":1.75}}
         
@@ -24,6 +24,6 @@ class programacion_ATS:
         #print(self.diccionario)
         del self.diccionario[nombre]
 
-obj1 = programacion_ATS()
-obj1.imprime_diccionario("Andres")
-obj1.imprime_diccionario("Valeria")
+obj2 = programacion_ATS2()
+obj2.imprime_diccionario("Andres")
+obj2.imprime_diccionario("Valeria")
